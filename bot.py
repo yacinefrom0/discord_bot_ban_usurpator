@@ -5,8 +5,6 @@ intents.members = True #So you can use on_member_join event
 
 client = discord.Client(intents=intents)
 
-banlist = ["Massa"]
-
 @client.event
 async def on_member_join(member):
     print("New member !")
