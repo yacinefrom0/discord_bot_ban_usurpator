@@ -7,6 +7,10 @@ client = discord.Client(intents=intents)
 #banlist = ["Massa"] #If you want to ban every people that have "Massa" string in her username use that
 
 @client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+    
+@client.event
 async def on_member_join(member):
     print("New member !")
     #if any(banned in member.name for banned in banlist): #If you want to ban every people that have "Massa" string in her username use that
