@@ -5,15 +5,18 @@ intents.members = True
 
 client = discord.Client(intents=intents)
 
-banlist = ["word1", "word2"]
+banlist = ["Massa"]
 
 @client.event
 async def on_member_join(member):
     print("New member !")
     if any(banned in member.name for banned in banlist):
         print("Found the target !")
-        await member.ban()
-        print("Il a été banni :D")
+        try:
+            print("Je banni le saligot !")
+            await member.ban(reason="Vous avez banni car nous soupçonons que vous usurper Massa")
+        except:
+            print("Couldn't ban the target :(")
         return
 
-client.run('Votre ID here')
+client.run('votre_id_here')
