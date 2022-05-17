@@ -18,7 +18,7 @@ async def on_member_join(member):
         print("Found the target !")
         try:
             print("Je banni le saligot !")
-            await member.ban(reason="Vous avez banni car nous soupçonons que vous usurper Massa")
+            await member.ban(reason="Vous avez été banni car votre username est interdit.")
         except:
             print("Couldn't ban the target :(")
         return
