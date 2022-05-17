@@ -1,5 +1,6 @@
-# discord_bot_ban_usurpator
-This bot help you manage your server in Discord. It bans people that try to usurp your project's name
+Anti Usurper Discord
+
+This bot bans users who attempt to impersonate your project
 
 Usage
 
