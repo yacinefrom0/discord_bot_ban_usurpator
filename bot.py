@@ -4,23 +4,26 @@ intents = discord.Intents.default()
 intents.members = True #So you can use on_member_join event
 
 client = discord.Client(intents=intents)
-#banlist = ["Massa"] #If you want to ban every people that have "Massa" string in her username use that
+
+banlist = ["Massa"]
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    
+
 @client.event
 async def on_member_join(member):
-    print("New member !")
-    #if any(banned in member.name for banned in banlist): #If you want to ban every people that have "Massa" string in her username use that
-    if member.name == "Massa": #Only ban Massa username and let the others like MassaBot / MassaPaul etc
-        print("Found the target !")
+    print(f'New member {member.name}, joined the server!')
+    #if any(banned in member.name for banned in banlist):
+    if member.name.lower() == "massa":
+        print(f'{member.name} matches the target string!')
         try:
-            print("Je banni le saligot !")
-            await member.ban(reason="Vous avez été banni car votre username est interdit.")
+            print(f'Banning {member.name}!')
+            await member.ban(reason='[your_ban_reason_here]')
         except:
-            print("Couldn't ban the target :(")
+            print(f'Failed to ban {member.name}... :c')
         return
+    else:
+        print(f'No need to ban {member.name}, does not match the target string!')
 
-client.run('votre_id')
+client.run('token_here')
