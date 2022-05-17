@@ -12,4 +12,4 @@ Next :
 
 - If you don't have it yet, install python (https://www.python.org/downloads/).
 - Install discord.py via pip (guide here : https://discordpy.readthedocs.io/en/stable/intro.html).
-- Then, in bot.py, add your token
+- Then, in bot.py, add your token here : client.run('votre_id')
