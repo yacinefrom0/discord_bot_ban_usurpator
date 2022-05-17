@@ -1,6 +1,7 @@
 Anti Usurper Discord
 
 This bot bans users who attempt to impersonate your project
+For example, if your project is called "CryptoDay", all users with the username "Cryptoday" will be automatically banned.
 
 Usage
 
