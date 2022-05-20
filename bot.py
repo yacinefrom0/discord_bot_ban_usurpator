@@ -19,7 +19,7 @@ whitelisted_user_ids = [
     123456789123456789,  # your_moderator_user_id_here
 ]
 
-ban_reason = 'Verification, the server name or moderator names are not allowed in the username to prevent scammers.'
+ban_reason = 'The server name or moderator names are not allowed in the username to prevent scammers.'
 bot_token = 'bot_token_here'
 # === ↑ SETTINGS ↑ ============================================================
 
