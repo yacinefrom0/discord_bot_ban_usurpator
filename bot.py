@@ -7,7 +7,7 @@ intents.members = True
 
 # === ↓ SETTINGS ↓ ============================================================
 target_strings = [
-    'damir',
+    'test2',
     'test',
     'massa',
     'your_moderator_name_here',
