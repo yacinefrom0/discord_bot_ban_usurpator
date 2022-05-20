@@ -3,37 +3,41 @@ from discord import Member
 from discord.ext import commands
 
 intents = discord.Intents.default()
-intents.members = True #So you can use on_member_join event
-
-client = discord.Client(intents=intents)
+intents.members = True
 
 # === ↓ SETTINGS ↓ ============================================================
 target_strings = [
-    'verification',
-    'massa',
-    'vincent',
-    'seb',
     'damir',
+    'test',
+    'massa',
+    'your_moderator_name_here',
+    'whatever_other_words_that_need_banning',
 ]
 
 whitelisted_user_ids = [
-    885846376045506560,  # your_admin_user_id_here
+    975723804632449104,  # your_moderator_user_id_here
     123456789123456789,  # your_moderator_user_id_here
 ]
 
 ban_reason = 'Verification, the server name or moderator names are not allowed in the username to prevent scammers.'
-bot_token = 'your_token'
+bot_token = 'bot_token_here'
 # === ↑ SETTINGS ↑ ============================================================
 
-@client.event
+bot = commands.Bot(command_prefix='.', intents=intents)
+
+
+@bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
-
-@client.event
-async def on_member_join(member: Member):
     """
-    Checks the member names against illegal names, bans if illegal names are found
+    Executes when the Bot is ready
+    """
 
+    print('We have logged in as {0.user}'.format(bot))
+
+
+async def check_member(member: Member):
+    """
+    Checks the member names against illegal strings, bans if illegal names are found
     :param member: (Member) Object of said member
     """
 
@@ -62,15 +66,26 @@ async def on_member_join(member: Member):
     if member_banned is False:
         print(f'No need to ban {member.name}, does not match the target strings!')
 
-@client.event
+
+@bot.event
+async def on_member_join(member: Member):
+    """
+    Executes when a new member joins the server
+    :param member: (Member) Object of said member
+    """
+
+    await check_member(member=member)
+
+
+@bot.event
 async def on_member_update(before: Member, after: Member):
     """
     Executes when a member updates their profiler
-
     :param before: (Member) Object of said member before the profile changes
     :param after: (Member) Object of said member after the profile changes
     """
 
-    await on_member_join(member=after)
+    await check_member(member=after)
 
-client.run(bot_token)
+
+bot.run(bot_token)
